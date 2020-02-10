@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  RETHINKDB_HOST: '40.91.202.197',
-  RETHINKDB_PORT: 28015
+  apiUrl: 'http://localhost:3000/api'
 };
 
 /*
