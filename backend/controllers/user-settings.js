@@ -17,31 +17,31 @@ exports.getSettings = (req, res, next) => {
   exports.saveSettings = (req, res, next) => {
     const userId = req.userData.userId;
     const poeAccountName = req.body.poeAccountName;
+    const settingsId = req.body.id;
     
     const userSettings = new UserSettings({
-        creator: req.userData.userId,
-        poeAccountName: ''
+        _id: settingsId,
+        creator: userId,
+        poeAccountName: poeAccountName
       });
-    
-      post.save().then(createdPost => {
-        res.status(201).json({
-          message: 'Settings added successfully',
-          post: {
-            ...createdPost,
-            id: createdPost._id
-          }
+
+    if (settingsId) {
+        UserSettings.updateOne({ _id: settingsId }, userSettings).then(result => {
+            res.status(200).json({
+                message: 'Settings updated!'
+            });
+        });  
+    }
+    else {
+        userSettings.save().then(createdSettings => {
+          res.status(201).json({
+            message: 'Settings added successfully',
+            settings: createdSettings
+          });
+        }).catch(error => {
+          res.status(500).json({
+            message: 'Creating a setting failed!'
+          })
         });
-      }).catch(error => {
-        res.status(500).json({
-          message: 'Creating a post failed!'
-        })
-      });
-
-    res.status(500).json({
-        message: 'Not Implemented yet!'
-    })
-
-    res.status(500).json({
-        message: 'Not Implemented yet!'
-    })
+    }
   };
