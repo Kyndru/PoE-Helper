@@ -5,6 +5,7 @@ const path = require('path');
 
 const postRoutes = require('./routes/posts');
 const userRoutes = require('./routes/user');
+const settingsRoutes = require('./routes/user-settings');
 
 const app = express();
 
@@ -35,5 +36,6 @@ app.use((req, res, next) => {
 
 app.use('/api/posts', postRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/settings', settingsRoutes);
 
 module.exports = app;
