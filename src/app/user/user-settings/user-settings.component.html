@@ -1,0 +1,56 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion #accordion multi="true" *ngIf="!isLoading" class="headers-align">
+  <mat-expansion-panel  hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Personal data
+      </mat-panel-title>
+      <mat-panel-description>
+        Type your name and age
+        <mat-icon>account_circle</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <mat-label>First name</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Age</mat-label>
+      <input matInput type="number" min="1">
+    </mat-form-field>
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)="saveData(1)">Save</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Path of Exile name
+      </mat-panel-title>
+      <mat-panel-description>
+        Type in your Path of Exile account name
+        <mat-icon>assignment</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        placeholder="PoE-Account name"
+        name="poeaccount"
+        ngModel
+        #poenameInput="ngModel"
+      />
+      <!-- <mat-error *ngIf="poenameInput.invalid">Please enter a valid email</mat-error> -->
+    </mat-form-field>
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)="saveData(2)">Save</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>

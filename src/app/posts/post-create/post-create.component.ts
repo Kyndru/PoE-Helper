@@ -83,6 +83,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
     if (this.mode === 'create') {
       this.postsService.addPost(this.form.value.title, this.form.value.content, this.form.value.image)
         .subscribe((responseData) => {
+          this.form.reset();
           this.router.navigate(['/']);
       }, error => {
         this.isLoading = false;
@@ -90,13 +91,13 @@ export class PostCreateComponent implements OnInit, OnDestroy {
     } else {
       this.postsService.updatePost(this.postId, this.form.value.title, this.form.value.content, this.form.value.image)
         .subscribe((responseData) => {
+          this.form.reset();
           this.router.navigate(['/']);
       }, error => {
         this.isLoading = false;
       });
     }
 
-    this.form.reset();
   }
 
   onImagePicked(fileEvent: Event) {

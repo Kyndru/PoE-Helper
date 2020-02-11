@@ -12,6 +12,7 @@ import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { PostsModule } from './posts/posts.module';
 import { AuthModule } from './auth/auth.module';
+import { SettingsModule } from './user/settings.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     AngularMaterialModule,
     PostsModule,
-    AuthModule
+    AuthModule,
+    SettingsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
